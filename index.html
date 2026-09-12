@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>Gemeinde im Urchristentum – Lernzettel Klasse 7</title>
+<style>
+:root{
+  --ink:#17376B;          /* Kugelschreiberblau der Mitschrift */
+  --ink-soft:#43608F;
+  --sea:#0E6E72;          /* Mittelmeer */
+  --marker:#F2C14E;       /* Textmarker der Kopien */
+  --ok:#2F7A4E;
+  --no:#A6322E;
+  --sheet:#FDFDFA;
+  --desk:#E7ECF1;
+  --rule:#D5DCE4;
+  --rand:#E0B6B1;
+  --text:#20242B;
+  --muted:#5C6672;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--desk);color:var(--text);
+  font:400 17px/1.6 "Avenir Next","Segoe UI",system-ui,-apple-system,sans-serif;
+  padding:0 0 env(safe-area-inset-bottom);
+}
+.sheet{max-width:820px;margin:0 auto;background:var(--sheet);min-height:100vh;
+  border-left:1px solid var(--rule);border-right:1px solid var(--rule);position:relative}
+.pad{padding:0 22px 0 30px}
+@media(min-width:700px){.pad{padding:0 44px 0 64px}}
+
+/* Kopf */
+header.top{padding:26px 22px 18px 30px;border-bottom:2px solid var(--ink);
+  background:
+    repeating-linear-gradient(to bottom,transparent 0 27px,#E6EBF2 27px 28px);
+}
+@media(min-width:700px){header.top{padding:32px 44px 22px 64px}}
+h1{font-size:30px;line-height:1.15;margin:0 0 4px;color:var(--ink);letter-spacing:-.02em}
+@media(min-width:700px){h1{font-size:38px}}
+.datum{color:var(--muted);font-size:14px;margin:0}
+.hero-note{margin:16px 0 0;font-family:Charter,Georgia,"Iowan Old Style",serif;font-size:16px;color:var(--text)}
+
+/* Register / Reiter */
+nav.reiter{position:sticky;top:0;z-index:30;background:var(--sheet);
+  border-bottom:2px solid var(--ink);display:flex;gap:6px;overflow-x:auto;
+  padding:8px 14px 0 14px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+nav.reiter::-webkit-scrollbar{display:none}
+nav.reiter button{flex:0 0 auto;min-height:46px;padding:10px 15px;border:1px solid var(--rule);
+  border-bottom:none;border-radius:9px 9px 0 0;background:#EFF2F6;color:var(--muted);
+  font:600 15px/1.2 inherit;cursor:pointer;touch-action:manipulation;position:relative;top:2px}
+nav.reiter button[aria-selected="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+nav.reiter .nr{opacity:.6;margin-right:6px;font-weight:400}
+
+/* Fortschritt */
+.fortschritt{position:sticky;top:63px;z-index:29;background:var(--sheet);
+  border-bottom:1px solid var(--rule);padding:8px 22px 8px 30px;display:flex;
+  align-items:center;gap:12px;font-size:14px;color:var(--muted)}
+.balken{flex:1;height:8px;background:#E4E9EF;border-radius:99px;overflow:hidden}
+.balken i{display:block;height:100%;width:0;background:var(--ok);transition:width .35s}
+@media(prefers-reduced-motion:reduce){.balken i{transition:none}}
+
+section.kapitel{display:none;padding:22px 0 60px}
+section.kapitel.aktiv{display:block}
+h2{font-size:24px;color:var(--ink);margin:30px 0 10px;letter-spacing:-.01em}
+h2:first-child{margin-top:6px}
+h3{font-size:18px;margin:26px 0 8px;color:var(--ink)}
+p,li{font-family:Charter,Georgia,"Iowan Old Style",serif;font-size:17px;line-height:1.65}
+ul,ol{padding-left:22px}
+li{margin:5px 0}
+b,strong{color:var(--ink)}
+.mark{background:linear-gradient(to top,rgba(242,193,78,.75) 62%,transparent 62%);padding:0 2px}
+
+/* Bausteine */
+.merk{border-left:4px solid var(--ink);background:#F1F4F9;padding:14px 16px;margin:14px 0;border-radius:0 8px 8px 0}
+.merk p:first-child,.merk ul{margin-top:0}
+.merk p:last-child,.merk ul:last-child{margin-bottom:0}
+.hinweis{border:1px solid var(--marker);background:#FEF7E4;padding:14px 16px;margin:16px 0;border-radius:8px}
+.hinweis .kopf{font:600 15px/1.3 "Avenir Next",sans-serif;color:#8A6512;margin-bottom:6px}
+.achtung{border:1px solid var(--no);background:#FBF0EF;padding:14px 16px;margin:16px 0;border-radius:8px}
+.achtung .kopf{font:600 15px/1.3 "Avenir Next",sans-serif;color:var(--no);margin-bottom:6px}
+.quelle{font:400 13px/1.4 "Avenir Next",sans-serif;color:var(--muted);margin-top:6px}
+
+/* Aufgabenkarte */
+.aufgabe{border:1px solid var(--rule);border-radius:12px;padding:16px;margin:18px 0;background:#fff}
+.aufgabe > .titel{font:600 15px/1.3 "Avenir Next",sans-serif;color:var(--sea);margin-bottom:4px}
+.aufgabe > .anleitung{font-family:"Avenir Next",sans-serif;font-size:14px;color:var(--muted);margin:0 0 12px}
+
+/* Multiple Choice */
+.frage{margin:0 0 20px;padding:0 0 18px;border-bottom:1px dashed var(--rule)}
+.frage:last-child{border-bottom:none;padding-bottom:0;margin-bottom:0}
+.frage .text{font-family:Charter,Georgia,serif;font-size:17px;margin:0 0 10px;font-weight:600;color:var(--text)}
+.opt{display:flex;gap:10px;align-items:flex-start;width:100%;text-align:left;
+  min-height:48px;padding:11px 13px;margin:7px 0;border:1px solid var(--rule);border-radius:10px;
+  background:#FBFCFD;font:400 16px/1.4 Charter,Georgia,serif;color:var(--text);cursor:pointer;touch-action:manipulation}
+.opt .box{flex:0 0 22px;height:22px;border:1.5px solid var(--ink-soft);border-radius:5px;margin-top:1px;
+  display:grid;place-items:center;font-size:14px;color:#fff}
+.opt.richtig{border-color:var(--ok);background:#EDF6F0}
+.opt.richtig .box{background:var(--ok);border-color:var(--ok)}
+.opt.falsch{border-color:var(--no);background:#FBF0EF}
+.opt.falsch .box{background:var(--no);border-color:var(--no)}
+.opt[disabled]{cursor:default;opacity:1}
+.rueck{font:400 15px/1.5 Charter,Georgia,serif;margin:8px 0 0;padding:9px 12px;border-radius:8px;display:none}
+.rueck.zeig{display:block}
+.rueck.gut{background:#EDF6F0;color:#1F5636}
+.rueck.schlecht{background:#FBF0EF;color:#7C2A24}
+
+/* Lückentext */
+.lueck{font-family:Charter,Georgia,serif;font-size:17px;line-height:2.2}
+.lueck select{font:600 16px "Avenir Next",sans-serif;color:var(--ink);background:#F1F4F9;
+  border:1.5px solid var(--ink-soft);border-radius:8px;padding:7px 8px;min-height:40px;max-width:100%}
+.lueck select.richtig{border-color:var(--ok);background:#EDF6F0;color:#1F5636}
+.lueck select.falsch{border-color:var(--no);background:#FBF0EF;color:#7C2A24}
+
+/* Buttons */
+.btn{min-height:48px;padding:12px 18px;border-radius:10px;border:1.5px solid var(--ink);
+  background:var(--ink);color:#fff;font:600 16px "Avenir Next",sans-serif;cursor:pointer;touch-action:manipulation}
+.btn.leise{background:#fff;color:var(--ink)}
+.btn-zeile{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px;align-items:center}
+.stand{font:600 15px "Avenir Next",sans-serif;color:var(--muted)}
+
+/* Klappkarte */
+.klapp{border:1px solid var(--rule);border-radius:12px;margin:10px 0;overflow:hidden;background:#fff}
+.klapp > button{width:100%;text-align:left;min-height:54px;padding:14px 16px;border:none;background:#F1F4F9;
+  font:600 16px/1.35 "Avenir Next",sans-serif;color:var(--ink);display:flex;gap:12px;align-items:center;
+  cursor:pointer;touch-action:manipulation}
+.klapp > button .pfeil{margin-left:auto;transition:transform .2s;font-size:14px;color:var(--ink-soft)}
+.klapp[open] > button .pfeil{transform:rotate(90deg)}
+@media(prefers-reduced-motion:reduce){.klapp > button .pfeil{transition:none}}
+.klapp .inhalt{padding:4px 16px 14px;display:none}
+.klapp.auf .inhalt{display:block}
+.klapp .inhalt p:first-child{margin-top:8px}
+
+/* Reihenfolge */
+.reihe{list-style:none;padding:0;margin:0;counter-reset:r}
+.reihe li{display:flex;gap:10px;align-items:center;border:1px solid var(--rule);border-radius:10px;
+  padding:10px 10px 10px 12px;margin:8px 0;background:#FBFCFD;font-family:Charter,Georgia,serif;font-size:16px}
+.reihe li .zahl{flex:0 0 26px;height:26px;border-radius:50%;background:var(--ink);color:#fff;
+  display:grid;place-items:center;font:600 14px "Avenir Next",sans-serif}
+.reihe li .txt{flex:1}
+.reihe li .pfeile{display:flex;flex-direction:column;gap:4px}
+.reihe li .pfeile button{width:44px;height:30px;border:1px solid var(--rule);background:#fff;border-radius:7px;
+  font-size:13px;color:var(--ink);cursor:pointer;touch-action:manipulation}
+.reihe li.richtig{border-color:var(--ok);background:#EDF6F0}
+.reihe li.falsch{border-color:var(--no);background:#FBF0EF}
+
+/* Zuordnen */
+.paare{display:grid;gap:10px}
+.paar{border:1px solid var(--rule);border-radius:10px;padding:12px;background:#FBFCFD}
+.paar .links{font-family:Charter,Georgia,serif;font-size:16px;font-weight:600;color:var(--ink);margin-bottom:8px}
+.paar select{width:100%;font:400 16px "Avenir Next",sans-serif;padding:10px;min-height:46px;
+  border:1.5px solid var(--ink-soft);border-radius:8px;background:#fff;color:var(--text)}
+.paar select.richtig{border-color:var(--ok);background:#EDF6F0}
+.paar select.falsch{border-color:var(--no);background:#FBF0EF}
+
+/* Karte */
+.kartebox{border:1px solid var(--rule);border-radius:12px;overflow:hidden;background:#fff;margin:12px 0}
+svg.karte{display:block;width:100%;height:auto;touch-action:manipulation}
+svg.karte .stadt{cursor:pointer}
+svg.karte .punkt{fill:#fff;stroke:var(--ink);stroke-width:2.5}
+svg.karte .beschriftung{font:600 15px "Avenir Next",sans-serif;fill:#2B3440}
+svg.karte .stadt.getroffen .punkt{fill:var(--ok);stroke:var(--ok)}
+svg.karte .stadt.getroffen .beschriftung{fill:var(--ok)}
+svg.karte .stadt.daneben .punkt{fill:var(--no);stroke:var(--no)}
+svg.karte .stadt.daneben .beschriftung{fill:var(--no);text-decoration:line-through}
+
+table.vgl{width:100%;border-collapse:collapse;margin:14px 0;font-family:Charter,Georgia,serif;font-size:15.5px}
+table.vgl th,table.vgl td{border:1px solid var(--rule);padding:9px 10px;vertical-align:top;text-align:left}
+table.vgl th{background:#F1F4F9;color:var(--ink);font-family:"Avenir Next",sans-serif;font-size:14px}
+.scrollx{overflow-x:auto;-webkit-overflow-scrolling:touch}
+
+footer{padding:26px 22px 40px 30px;border-top:2px solid var(--ink);color:var(--muted);
+  font:400 14px/1.5 "Avenir Next",sans-serif}
+:focus-visible{outline:3px solid var(--sea);outline-offset:2px}
+</style>
+</head>
+<body>
+<div class="sheet">
+
+<header class="top">
+  <p class="datum">Evangelische Religion · Klasse 7 · Gymnasium Hessen</p>
+  <h1>Gemeinde im Urchristentum</h1>
+  <p class="hero-note">Dein Lernzettel zu den fünf Themen aus der Mitschrift vom 2.9. – tippe dich durch die Register, beantworte die Aufgaben und decke die Lösungen erst danach auf.</p>
+</header>
+
+<nav class="reiter" role="tablist" id="reiter"></nav>
+
+<div class="fortschritt">
+  <span id="standText">0 von 0 Aufgaben gelöst</span>
+  <span class="balken"><i id="standBalken"></i></span>
+</div>
+
+<main class="pad">
+
+<!-- ========== KAPITEL 1 ========== -->
+<section class="kapitel" id="k1" role="tabpanel">
+  <h2>1 · Wo die ersten Gemeinden entstanden</h2>
+
+  <div class="merk">
+    <p><b>Kernsatz:</b> Außerhalb von Palästina entstanden die ersten christlichen Gemeinden vor allem in den <span class="mark">Hafen- und Handelsstädten am Mittelmeer</span>. Sie gehörten alle zum Römischen Reich und liegen heute in Griechenland, der Türkei, Syrien und Italien.</p>
+  </div>
+
+  <h3>Kennzeichen einer antiken Hafenstadt</h3>
+  <ul>
+    <li>Ständig kamen <b>Fremde</b> in die Stadt – dadurch eine internationale Atmosphäre.</li>
+    <li>Die Menschen hatten eine ganz <b>unterschiedliche religiöse Herkunft</b>; viele Götter und Kulte nebeneinander.</li>
+    <li>Sehr <b>große soziale Unterschiede</b>: reiche Händler und Beamte – Handwerker, Seefahrer, Hafenarbeiter – Sklaven – Kriminelle.</li>
+  </ul>
+
+  <h3>Korinth: eine Stadt mit zwei Häfen</h3>
+  <p>Korinth lag auf dem schmalen Landstreifen (Isthmus), der Nord- und Südgriechenland verbindet. Deshalb hatte die Stadt zwei Häfen und lebte vom Warenverkehr zwischen Westen und Osten. Über der Stadt erhob sich der Burgberg <b>Akrokorinth</b> (575 m) mit dem Aphrodite-Tempel; dort lag auch das Villenviertel der Reichen.</p>
+
+  <div class="aufgabe" id="a-karte">
+    <div class="titel">Karte markieren</div>
+    <p class="anleitung">Im Neuen Testament sind mehrere Briefe nach Städten benannt, in denen Paulus Gemeinden gegründet oder besucht hat. Tippe auf der Karte die <b>6 Städte</b> an, nach denen ein neutestamentlicher Brief heißt. Ein Fehlversuch färbt sich rot.</p>
+    <div class="kartebox">
+      <svg class="karte" viewBox="0 0 1000 560" role="img" aria-label="Schematische Karte des Mittelmeerraums mit antiken Staedten">
+        <rect x="0" y="0" width="1000" height="560" fill="#E4DCCA"/>
+        <g fill="#AECED4">
+          <rect x="30" y="246" width="286" height="110" rx="46"/>
+          <rect x="30" y="300" width="790" height="170" rx="46"/>
+          <polygon points="330,140 382,140 448,300 396,300"/>
+          <polygon points="498,140 582,140 582,300 486,300"/>
+          <ellipse cx="690" cy="78" rx="152" ry="50"/>
+        </g>
+        <g fill="#7E9BA0" font-family="Avenir Next, sans-serif">
+          <text x="430" y="392" font-size="20" letter-spacing="4">Mittelmeer</text>
+          <text x="690" y="84" font-size="15" letter-spacing="2" text-anchor="middle">Schwarzes Meer</text>
+        </g>
+        <g fill="#A79880" font-family="Avenir Next, sans-serif" font-size="15" letter-spacing="1">
+          <text x="286" y="168" text-anchor="middle">Italien</text>
+          <text x="444" y="128" text-anchor="middle">Griechenland</text>
+          <text x="700" y="186" text-anchor="middle">Kleinasien</text>
+          <text x="900" y="250" text-anchor="middle">Syrien</text>
+          <text x="440" y="528" text-anchor="middle">Nordafrika</text>
+        </g>
+        <g id="staedte"></g>
+      </svg>
+    </div>
+    <div class="btn-zeile">
+      <button class="btn leise" id="karteTipp">Tipp anzeigen</button>
+      <button class="btn leise" id="karteReset">Karte zurücksetzen</button>
+      <span class="stand" id="karteStand">0 von 6 gefunden</span>
+    </div>
+    <div class="rueck" id="karteRueck"></div>
+    <p class="quelle">Schematische Karte, nicht maßstabsgetreu – nachgezeichnet nach der Karte M1 im Arbeitsblatt.</p>
+  </div>
+
+  <div class="hinweis">
+    <div class="kopf">Gut zu wissen</div>
+    <p style="margin:0">Nicht jede dieser Städte liegt direkt am Meer: <b>Kolossä</b> lag im Landesinneren Kleinasiens an einer wichtigen Handelsstraße, und <b>Philippi</b> hatte seinen Hafen einige Kilometer entfernt in Neapolis. Entscheidend war nicht das Wasser vor der Tür, sondern der <b>Verkehr</b>: Wo Menschen und Waren durchkamen, kamen auch neue Ideen an.</p>
+  </div>
+
+  <div class="aufgabe"><div class="titel">Ankreuzen</div>
+    <p class="anleitung">Jeweils eine Antwort ist richtig.</p>
+    <div id="mc1"></div>
+  </div>
+
+  <div class="aufgabe"><div class="titel">Lückentext</div>
+    <p class="anleitung">Wähle in jeder Lücke das passende Wort und prüfe anschließend.</p>
+    <div id="lt1"></div>
+  </div>
+
+  <div class="aufgabe"><div class="titel">Korinth zuordnen</div>
+    <p class="anleitung">Welche Erklärung gehört zu welchem Ort? Nutze die Auswahlfelder.</p>
+    <div id="zu1"></div>
+  </div>
+</section>
+
+<!-- ========== KAPITEL 2 ========== -->
+<section class="kapitel" id="k2" role="tabpanel">
+  <h2>2 · Warum ausgerechnet dort?</h2>
+  <p>Die Leitfrage aus der Stunde vom 19.8. lautete: <i>Weshalb konnten gerade an Orten wie Korinth so schnell christliche Gemeinden entstehen?</i> In der Mitschrift stehen vier Gründe.</p>
+
+  <div class="merk">
+    <ol>
+      <li><b>Religiöse Toleranz:</b> Es lebten viele Religionen nebeneinander. Man war deshalb offen gegenüber neuen religiösen Strömungen.</li>
+      <li><b>Der Seeweg:</b> Nachrichten über die einzelnen Gemeinden konnten über das Meer schnell weitergegeben werden. So waren Austausch und Hilfe bei Gemeindegründungen möglich.</li>
+      <li><b>Die Armen:</b> Viele Arme waren für die Botschaft vom Reich Gottes empfänglich – sie gilt allen Menschen, egal welcher sozialen Herkunft.</li>
+      <li><b>Gemeinschaft:</b> Das Gemeinschaftsgefühl in einer christlichen Gemeinde zog viele an – im Gegensatz zur Anonymität der Großstadt.</li>
+    </ol>
+  </div>
+
+  <div class="klapp"><button type="button">Selbsttest: Nenne die vier Gründe frei aus dem Kopf<span class="pfeil">›</span></button>
+    <div class="inhalt"><p>Toleranz · Seeweg · Arme · Gemeinschaft. Merkhilfe: <b>T-S-A-G</b> – „<b>T</b>oleranz <b>s</b>chickt <b>a</b>llen <b>G</b>emeinschaft.“ Wenn du alle vier mit je einem ganzen Satz erklären kannst, sitzt der Stoff.</p></div>
+  </div>
+
+  <div class="aufgabe"><div class="titel">Ankreuzen</div>
+    <p class="anleitung">Jeweils eine Antwort ist richtig.</p>
+    <div id="mc2"></div>
+  </div>
+
+  <div class="aufgabe"><div class="titel">Lückentext</div>
+    <p class="anleitung">Ergänze die Begründungen.</p>
+    <div id="lt2"></div>
+  </div>
+
+  <div class="hinweis">
+    <div class="kopf">Denkaufgabe für die Arbeit</div>
+    <p style="margin:0">Eine typische Aufgabe lautet: <i>„Erkläre, warum das Christentum sich zuerst in den Städten und nicht auf dem Land ausbreitete.“</i> Antworte in drei Schritten: (1) Merkmal der Stadt nennen, (2) mit einem Grund verbinden, (3) Folge beschreiben. Beispiel: In Hafenstädten trafen ständig Fremde zusammen (Merkmal), deshalb war man neue Religionen gewohnt (Grund), und eine neue Gruppe fiel nicht negativ auf, sondern konnte offen werben (Folge).</p>
+  </div>
+</section>
+
+<!-- ========== KAPITEL 3 ========== -->
+<section class="kapitel" id="k3" role="tabpanel">
+  <h2>3 · Eine Gemeindeversammlung in Korinth</h2>
+  <p>Das Arbeitsblatt M3 erzählt von einem griechischen Schreibsklaven, der in einer Bank arbeitet. Sein Kollege Tertius nimmt ihn mit zu einer Versammlung der Christen. Hier die Handlung in Kürze – so kannst du sie in der Arbeit wiedergeben:</p>
+
+  <div class="merk">
+    <p>Die Gruppe trifft sich am Abend im Innenhof der <b>Villa des Gaius</b> im Nobelviertel. Etwa 20 bis 30 Leute sind da, zuerst vor allem wohlhabende: Schreibsklaven, Gewerbetreibende, Beamte. Jeder bringt etwas zu essen mit, alles kommt auf einen großen Tisch. Später treffen erschöpfte <b>Hafen- und Hilfsarbeiter</b> ein, fast alle Sklaven – für sie ist kaum noch etwas übrig. Dann beginnt der offizielle Teil: der Gemeindevorsteher <b>Krispus</b> tritt an einen Tisch mit Brot und Kelch, eine Frau schlägt den Rhythmus auf einer Handtrommel, alle singen <b>„Maranatha“</b> („Komm, Herr!“). Krispus teilt Brot und Kelch mit den Worten Jesu. Danach liest der Weingutbesitzer <b>Stephanas</b> aus einem Brief des Paulus vor und erklärt ihn. Einzelne bringen eigene Beiträge ein, eine Frau spricht unverständliche Worte. Am Ende gibt es Streit: Die Hafenarbeiter zeigen auf den leeren Tisch, die Diakonin <b>Phoebe</b> verschafft sich Gehör.</p>
+    <p class="quelle">Zusammenfassung des Arbeitsblatts M3 „Konflikt in Korinth“ in eigenen Worten.</p>
+  </div>
+
+  <h3>Wer ist wer?</h3>
+  <div class="klapp"><button type="button">Krispus<span class="pfeil">›</span></button><div class="inhalt"><p>Der <b>Vorsteher</b> der Gemeinde. Er leitet die Feier und spricht das Dankgebet über Brot und Kelch. Im Neuen Testament wird er als früherer Synagogenvorsteher erwähnt, den Paulus selbst getauft hat.</p></div></div>
+  <div class="klapp"><button type="button">Stephanas<span class="pfeil">›</span></button><div class="inhalt"><p>Ein wohlhabender <b>Weingutbesitzer</b>. Er liest den Brief des Paulus vor und erklärt schwierige Stellen – er übernimmt also die Rolle, die heute die Predigt hat. Auffällig: Er behandelt seine Sklaven gut, seitdem er getauft ist, und bringt sie in die erste Reihe mit.</p></div></div>
+  <div class="klapp"><button type="button">Phoebe<span class="pfeil">›</span></button><div class="inhalt"><p>Die <b>Diakonin</b> der Gemeinde. Sie kümmert sich darum, dass alle genug zu essen bekommen, und erinnert daran, dass die Kranken vernachlässigt werden. Ihr Satz „Alle sind Priester“ fasst zusammen: Jeder hat von Gott eine Fähigkeit bekommen, mit der er den anderen hilft.</p></div></div>
+  <div class="klapp"><button type="button">Gaius und Tertius<span class="pfeil">›</span></button><div class="inhalt"><p><b>Gaius</b> stellt seine Villa als Versammlungsort zur Verfügung – die Gemeinde hat noch kein eigenes Gebäude. <b>Tertius</b> ist der Kollege des Erzählers aus der Bank; er bringt ihn als Gast mit.</p></div></div>
+
+  <div class="aufgabe" id="a-reihe"><div class="titel">Ablauf ordnen</div>
+    <p class="anleitung">Bringe die Phasen der Versammlung mit den Pfeilen in die richtige Reihenfolge und prüfe dann.</p>
+    <ol class="reihe" id="rf1"></ol>
+    <div class="btn-zeile">
+      <button class="btn" id="rf1pruef">Reihenfolge prüfen</button>
+      <button class="btn leise" id="rf1loesung">Lösung zeigen</button>
+    </div>
+    <div class="rueck" id="rf1rueck"></div>
+  </div>
+
+  <h3>Vergleich mit einem Gottesdienst heute</h3>
+  <div class="klapp"><button type="button">Gemeinsamkeiten aufdecken<span class="pfeil">›</span></button><div class="inhalt">
+    <ul>
+      <li>Man versammelt sich regelmäßig als Gemeinde an einem festen Ort.</li>
+      <li>Es wird gemeinsam <b>gesungen und gebetet</b>.</li>
+      <li>Aus einem biblischen Text wird <b>vorgelesen und erklärt</b> (heute: Lesung und Predigt).</li>
+      <li><b>Abendmahl</b> mit Brot und Kelch und denselben Worten Jesu, im Gedenken an ihn.</li>
+      <li>Eine Person <b>leitet</b> die Feier.</li>
+    </ul></div></div>
+  <div class="klapp"><button type="button">Unterschiede aufdecken<span class="pfeil">›</span></button><div class="inhalt">
+    <ul>
+      <li>Damals im <b>Privathaus</b> statt in einer Kirche – Kirchengebäude gab es noch nicht.</li>
+      <li>Das Abendmahl war Teil einer <b>richtigen Mahlzeit</b>, heute genügen Oblate und ein Schluck Wein oder Saft.</li>
+      <li>Nur eine <b>kleine Gruppe</b> von 20 bis 30 Leuten, die sich persönlich kannten.</li>
+      <li><b>Kein fester Ablauf</b>: Jeder konnte spontan etwas beitragen. Heute gibt es eine feste Liturgie und ein Gesangbuch.</li>
+      <li>Keine ausgebildeten Pfarrerinnen und Pfarrer, sondern angesehene Gemeindeglieder als Leiter.</li>
+      <li>Die Gemeinde rechnete <b>jeden Tag</b> mit der Wiederkunft Jesu („Maranatha“).</li>
+    </ul></div></div>
+
+  <div class="aufgabe"><div class="titel">Ankreuzen</div>
+    <p class="anleitung">Jeweils eine Antwort ist richtig.</p>
+    <div id="mc3"></div>
+  </div>
+
+  <div class="hinweis">
+    <div class="kopf">Zum Weiterdenken (M4, M5, M8)</div>
+    <p style="margin:0">Auf den anderen Blättern siehst du eine Christin in der antiken <b>Gebetshaltung</b> aus den Katakomben: aufrecht stehend, Ellenbogen am Körper, Unterarme und Hände weit geöffnet. Sie kniet nicht und wirft keine Kusshand – genau das taten die Römer vor den Götter- und Kaiserbildern, und genau das verweigerten die Christen. Die offene Haltung bedeutet: <b>Öffnung zu Gott</b>, Vertrauen statt Unterwerfung. Das Lied M8 („Alle an einem Tisch“) und das Gebet M5 greifen dasselbe Thema auf: Die Gemeinschaft am Tisch ist das Zeichen dafür, dass alle dazugehören.</p>
+  </div>
+</section>
+
+<!-- ========== KAPITEL 4 ========== -->
+<section class="kapitel" id="k4" role="tabpanel">
+  <h2>4 · Wie Paulus sich Gemeinde vorstellt</h2>
+
+  <div class="merk">
+    <p><b>Das Bild vom Körper (1 Kor 12):</b> Die Gemeinde ist der <span class="mark">Leib Christi</span>. Die einzelnen Mitglieder sind die Glieder dieses Körpers. So wie Hand, Auge und Fuß ganz verschiedene Aufgaben haben und trotzdem keines fehlen darf, hat jedes Gemeindeglied andere Fähigkeiten – und jede davon ist für ein gelingendes Gemeindeleben unentbehrlich. Alle sind <b>gleichberechtigt</b>, niemand steht über dem anderen: <b>keine Konkurrenz</b>.</p>
+  </div>
+
+  <div class="achtung">
+    <div class="kopf">Prüf das in deiner Mitschrift nach</div>
+    <p style="margin:0">In der Mitschrift vom 2.9. steht: „Der Leib ist der Geist Gottes, in dem alle Gemeindemitglieder verbunden werden.“ Das ist etwas durcheinandergeraten. Richtig ist: <b>Die Gemeinde ist der Leib Christi</b> – und alle sind <b>durch den einen Geist</b> in diesen einen Leib hinein getauft. Der Geist ist also das, was verbindet, und der Leib ist das, wozu man verbunden wird. Genau diesen Satz liest Stephanas in M3 vor: Alle sind in einem Geist getauft, ob Juden oder Griechen, ob Sklaven oder Freie.</p>
+  </div>
+
+  <div class="aufgabe"><div class="titel">Lückentext</div>
+    <p class="anleitung">Das Bild vom Körper in eigenen Worten.</p>
+    <div id="lt3"></div>
+  </div>
+
+  <h3>Die Konflikte in Korinth – und was Paulus rät</h3>
+  <p>Auf dem Blatt M6b stehen vier Ausschnitte aus dem 1. Korintherbrief. In jedem steckt ein Konflikt der jungen Gemeinde.</p>
+  <div class="scrollx">
+  <table class="vgl">
+    <tr><th>Konflikt in der Gemeinde</th><th>Antwort des Paulus</th><th>Stelle</th></tr>
+    <tr><td>Es bilden sich Parteien: „Ich gehöre zu Paulus!“ – „Ich zu Apollos!“ – „Ich zu Petrus!“</td><td>Seid einig, bildet keine Gruppen. Christus lässt sich nicht zerteilen; ihr seid auf seinen Namen getauft, nicht auf meinen.</td><td>1 Kor 1,10–13</td></tr>
+    <tr><td>Christen verklagen einander vor heidnischen Gerichten.</td><td>Lasst die Gemeinde selbst entscheiden. Lieber Unrecht leiden, als so vor allen dazustehen.</td><td>1 Kor 6,1.7</td></tr>
+    <tr><td>Beim gemeinsamen Mahl isst jeder sein eigenes Essen: Der eine hungert, der andere ist schon betrunken.</td><td>Dann feiert ihr gar nicht das Mahl des Herrn. Wartet aufeinander, bis alle da sind; wer Hunger hat, soll vorher zu Hause essen.</td><td>1 Kor 11,17.20f.33f</td></tr>
+    <tr><td>Im Gottesdienst reden alle durcheinander, manche in unverständlicher Sprache.</td><td>Jeder darf etwas beitragen, aber einer nach dem anderen – damit alle etwas davon haben.</td><td>1 Kor 14,26.31</td></tr>
+  </table>
+  </div>
+  <p class="quelle">Inhaltlich zusammengefasst nach den Bibelauszügen auf M6b.</p>
+
+  <div class="aufgabe"><div class="titel">Zuordnen</div>
+    <p class="anleitung">Welcher Rat des Paulus passt zu welchem Konflikt?</p>
+    <div id="zu2"></div>
+  </div>
+
+  <div class="aufgabe"><div class="titel">Ankreuzen</div>
+    <p class="anleitung">Jeweils eine Antwort ist richtig.</p>
+    <div id="mc4"></div>
+  </div>
+
+  <div class="klapp"><button type="button">Wie hängen Bild und Konflikte zusammen?<span class="pfeil">›</span></button><div class="inhalt">
+    <p>Alle vier Konflikte haben dieselbe Ursache: Einzelne stellen sich <b>über</b> die anderen – die eigene Gruppe, der eigene Hunger, die eigene auffällige Begabung. Das Bild vom Körper ist die Antwort darauf: Ein Fuß, der sich für wichtiger hält als die Hand, macht den ganzen Körper kaputt. Wenn du in der Arbeit gefragt wirst, wie Paulus die Konflikte löst, kannst du immer mit diesem Bild argumentieren.</p></div></div>
+</section>
+
+<!-- ========== KAPITEL 5 ========== -->
+<section class="kapitel" id="k5" role="tabpanel">
+  <h2>5 · Der Konflikt um Onesimus: Wie frei ist ein Christ?</h2>
+
+  <div class="merk">
+    <p><b>Die Geschichte:</b> <b>Onesimus</b> ist Sklave des <b>Philemon</b>, eines Christen aus Kolossä, in dessen Haus sich die Gemeinde trifft. Onesimus läuft weg und kommt zu <b>Paulus</b>, der im Gefängnis sitzt – vermutlich in Ephesus. Dort lernt er den christlichen Glauben kennen und will getauft werden. Paulus schickt ihn zu Philemon zurück und gibt ihm einen Brief mit (um 55 n. Chr.). Darin bittet er Philemon, Onesimus zu verzeihen und ihn <span class="mark">nicht mehr als Sklaven, sondern als geliebten Bruder</span> aufzunehmen. Einen entstandenen Schaden will Paulus selbst bezahlen.</p>
+  </div>
+
+  <p>Das Szenenblatt M9a erfindet dazu ein Streitgespräch: Paulus diskutiert mit seinen Mitarbeitern <b>Hepaphras</b> und <b>Demas</b> darüber, was mit Onesimus geschehen soll – und darüber, was „Freiheit“ für einen Christen überhaupt heißt. Drei Personen, drei Antworten:</p>
+
+  <div class="scrollx">
+  <table class="vgl">
+    <tr><th>&nbsp;</th><th>Hepaphras</th><th>Paulus</th><th>Demas</th></tr>
+    <tr><th>Was soll mit Onesimus geschehen?</th>
+      <td>Er darf auf keinen Fall zurück. Er soll der erste befreite Sklave sein – am besten sollten alle frei werden.</td>
+      <td>Er ist hin- und hergerissen: Die Taufe kann er Onesimus nicht verweigern, aber zurückschicken wird er ihn wohl müssen. Onesimus tut ihm leid.</td>
+      <td>Er muss zurückgeschickt werden. Recht und Ordnung müssen gewahrt bleiben – er bleibt ein Sklave.</td></tr>
+    <tr><th>Was heißt „Freiheit“?</th>
+      <td><b>Äußerliche Freiheit</b>, hier und jetzt. Begründung: Jesus hat alle Menschen gleich behandelt, vor Gott sind alle gleich. Nur Gott darf zwischen Menschen unterscheiden.</td>
+      <td><b>Freiheit im Geist</b>: Vor Gott sind alle frei. Aber bis der Herr wiederkommt, soll jeder in seinem Stand bleiben. Ordnungen gewaltsam umzustürzen lehnt er ab.</td>
+      <td><b>Innerliche Freiheit</b> von der Macht der Sünde. Mit äußerlicher Freiheit hat das nichts zu tun. Die richtige Freiheit gilt erst in der neuen Welt, wenn der Herr wiederkommt: hoffen, warten, beten.</td></tr>
+  </table>
+  </div>
+  <p class="quelle">Inhaltlich zusammengefasst nach der Szene M9a (Berg/Berg, Lieder-Bilder-Szenen im Religionsunterricht, Bd. 9).</p>
+
+  <div class="achtung">
+    <div class="kopf">Hier weicht deine Mitschrift ab</div>
+    <p>In der oberen Tabelle vom 9.9. sind die Spalten <b>Hepaphras</b> und <b>Paulus</b> offenbar vertauscht. Dort steht bei Paulus „ist dafür, dass Onesimus freigelassen wird“ und „glaubt, dass Freiheit physisch gemeint ist“ – das ist im Text aber die Position von <b>Hepaphras</b>. Umgekehrt ist es <b>Paulus</b>, der hin- und hergerissen ist, die Taufe nicht verweigern kann und am Ende sagt, dass er Onesimus wohl zurückschicken muss.</p>
+    <p style="margin-bottom:0">Deine <b>untere</b> Tabelle (Freiheit nach …) stimmt dagegen mit dem Text überein. Frag am besten kurz im Unterricht nach, damit du in der Arbeit die Fassung schreibst, die eure Lehrkraft an der Tafel hatte.</p>
+  </div>
+
+  <div class="aufgabe"><div class="titel">Wer sagt was?</div>
+    <p class="anleitung">Ordne jede Aussage der richtigen Person zu. Die Aussagen sind sinngemäß wiedergegeben.</p>
+    <div id="mc5"></div>
+  </div>
+
+  <div class="klapp"><button type="button">Warum ist Paulus so zurückhaltend?<span class="pfeil">›</span></button><div class="inhalt">
+    <p>Zwei Gründe stehen im Text: Erstens erwartet Paulus, dass der Herr <b>bald wiederkommt</b> – dann lohnt es sich in seinen Augen nicht, die Weltordnung umzubauen. Zweitens fürchtet er <b>Gewalt</b>: Er erinnert an Spartakus und meint, Herren und Sklaven könne man nicht gewaltsam austauschen.</p>
+    <p>Trotzdem ist sein Brief an Philemon ein erster Schritt: Wer seinen Sklaven als <b>Bruder</b> aufnehmen soll, kann ihn nicht mehr wie ein Stück Vieh behandeln. Genau darin liegt die Bedeutung dieses kurzen Briefes für das Sklavenproblem.</p></div></div>
+
+  <div class="klapp"><button type="button">Beurteilen: Welche Position überzeugt dich?<span class="pfeil">›</span></button><div class="inhalt">
+    <p>Das ist eine <b>Beurteilungsaufgabe</b> – hier gibt es keine falsche Meinung, aber eine schlechte Begründung. Baue deine Antwort so:</p>
+    <ol>
+      <li>Position nennen und in einem Satz erklären („Ich halte Hepaphras’ Position für überzeugend, weil …“).</li>
+      <li>Ein <b>Argument aus dem Text</b> anführen (z. B. dass Jesus alle gleich behandelt hat).</li>
+      <li>Einen <b>Einwand</b> der Gegenseite nennen (z. B. Paulus’ Sorge vor Gewalt).</li>
+      <li>Abwägen und ein Fazit ziehen – gern mit Blick auf heute: Wann muss man Ungerechtigkeit sofort abschaffen, wann Schritt für Schritt?</li>
+    </ol></div></div>
+
+  <h3>Der zweite Streitfall: Götzenopferfleisch (M10)</h3>
+  <p>In den Tempeln Korinths wurden den römischen Göttern Tiere geopfert. Meist verbrannte man nur die Innereien – das <b>Fleisch</b> wurde auf dem Markt nebenan verkauft. Wer dort einkaufte, bekam also Fleisch, das den Göttern geweiht war. Für Juden war das unmöglich zu essen. Und für Christen?</p>
+  <p><b>Quartus</b> steckt deshalb in der Klemme. Er war Sklave, ist jetzt freigelassen und geschäftlich von seinem früheren Herrn <b>Babbios</b> abhängig, der ihm Aufträge zuschanzt und ihn regelmäßig zu großen Gelagen einlädt. Bleibt er weg, verliert er die Gunst seines Gönners und kann seine Familie nicht ernähren. Geht er hin, isst er Opferfleisch – und die Judenchristen in der Gemeinde werfen ihm vor, er mache damit die ganze Gemeinde unrein. Quartus hält dagegen: Durch die Taufe sei er ein für alle Mal rein, und Jesus habe gesagt, nicht was in den Menschen hineingeht, mache ihn unrein, sondern was aus seinen Gedanken herauskommt.</p>
+
+  <div class="aufgabe"><div class="titel">Ankreuzen</div>
+    <p class="anleitung">Zu Philemon, Onesimus und dem Opferfleisch.</p>
+    <div id="mc6"></div>
+  </div>
+
+  <div class="hinweis">
+    <div class="kopf">Der rote Faden aller fünf Kapitel</div>
+    <p style="margin:0">In den Hafenstädten trafen Arme und Reiche, Sklaven und Freie, Juden und Griechen aufeinander (Kapitel 1 und 2). Genau diese Mischung saß dann in der Gemeindeversammlung an einem Tisch (Kapitel 3). Weil das nie von allein funktioniert, schreibt Paulus vom <b>Leib Christi</b>, in dem alle gleich wichtig sind (Kapitel 4). Und an Onesimus und Quartus zeigt sich, wie schwer dieser Anspruch im Alltag durchzuhalten war (Kapitel 5). Wenn du diesen Faden erzählen kannst, hast du das Thema verstanden.</p>
+  </div>
+</section>
+
+<!-- ========== KAPITEL 6 ========== -->
+<section class="kapitel" id="k6" role="tabpanel">
+  <h2>6 · Abschluss-Check</h2>
+  <p>Zehn gemischte Fragen quer durch alle Kapitel. Mach sie am besten erst, wenn du die anderen Register durch hast.</p>
+
+  <div class="aufgabe"><div class="titel">Gemischte Fragen</div>
+    <p class="anleitung">Jeweils eine Antwort ist richtig.</p>
+    <div id="mc7"></div>
+  </div>
+
+  <h3>Schreibaufgaben wie in der Arbeit</h3>
+  <p>Such dir eine aus und schreib sie wirklich auf – 10 bis 15 Sätze reichen. Das ist die beste Vorbereitung, weil in der Arbeit fast immer ein solcher Teil vorkommt.</p>
+
+  <div class="klapp"><button type="button">A · Bericht aus der Sicht eines Gemeindeglieds<span class="pfeil">›</span></button><div class="inhalt">
+    <p>Wähle eine Rolle: Sklave, Witwe, Hafenarbeiter oder Bankangestellter. Erzähle die Versammlung aus dieser Sicht und erkläre, was du dir von der christlichen Gemeinde versprichst.</p>
+    <p><b>Checkliste:</b> Ich schreibe durchgehend in der Ich-Form · ich nenne mindestens drei Dinge, die wirklich passiert sind (Mahl, Lied, Brot und Kelch, Brief, Streit) · ich sage, wie es mir dabei ging · ich nenne eine Hoffnung und einen Ärger.</p></div></div>
+
+  <div class="klapp"><button type="button">B · Brief an Paulus<span class="pfeil">›</span></button><div class="inhalt">
+    <p>Beginne so: „Lieber Paulus, bei uns in der Gemeinde von Korinth ist neulich Folgendes geschehen …“ Schildere einen Konflikt (leerer Tisch, Parteien, Streit ums Opferfleisch) und bitte um Rat.</p>
+    <p><b>Checkliste:</b> Anrede und Gruß · der Konflikt wird so erklärt, dass ihn jemand versteht, der nicht dabei war · beide Seiten kommen vor · eine konkrete Frage am Schluss · höflicher Briefschluss.</p></div></div>
+
+  <div class="klapp"><button type="button">C · Antwortbrief des Paulus<span class="pfeil">›</span></button><div class="inhalt">
+    <p>Antworte als Paulus auf einen der Konflikte. Nutze dabei das Bild vom Körper und mindestens ein Argument aus dem 1. Korintherbrief.</p>
+    <p><b>Checkliste:</b> Ich gehe auf den geschilderten Fall ein · ich argumentiere mit dem Bild vom Leib Christi · ich gebe eine konkrete Anweisung (z. B. „wartet aufeinander“) · ich bleibe freundlich, aber deutlich.</p></div></div>
+
+  <div class="klapp"><button type="button">D · Streitgespräch / Rollenspiel<span class="pfeil">›</span></button><div class="inhalt">
+    <p>Schreibe das Gespräch zwischen Hepaphras, Paulus und Demas weiter: Onesimus selbst kommt dazu und sagt, was er will. Jede Person muss im Gespräch bei ihrem Freiheitsverständnis bleiben.</p>
+    <p><b>Checkliste:</b> Sprechernamen vor jedem Beitrag · jede Figur behält ihre Position · mindestens zwei Argumente pro Figur · ein Schluss, der offen bleiben darf.</p></div></div>
+
+  <div class="klapp"><button type="button">Die Operatoren – was genau will die Aufgabe?<span class="pfeil">›</span></button><div class="inhalt">
+    <ul>
+      <li><b>Nenne</b> – nur Stichpunkte, kein ganzer Satz nötig.</li>
+      <li><b>Beschreibe</b> – in eigenen Worten wiedergeben, was im Text steht, ohne zu bewerten.</li>
+      <li><b>Erkläre</b> – Zusammenhänge und Gründe dazusagen: weil, deshalb, dadurch.</li>
+      <li><b>Vergleiche</b> – immer beides: Gemeinsamkeiten <i>und</i> Unterschiede, am besten in einer festen Reihenfolge.</li>
+      <li><b>Beurteile / Nimm Stellung</b> – eigene Meinung mit Begründung, Gegenargument und Fazit.</li>
+    </ul></div></div>
+
+  <div class="merk">
+    <p><b>Selbstcheck vor der Arbeit.</b> Kann ich frei erzählen: drei Kennzeichen einer Hafenstadt · vier Gründe für die Entstehung der Gemeinden · den Ablauf einer Gemeindeversammlung in acht Schritten · zwei Gemeinsamkeiten und zwei Unterschiede zum Gottesdienst heute · das Bild vom Leib Christi · vier Konflikte aus dem 1. Korintherbrief · die Geschichte von Onesimus · die drei Freiheitsverständnisse? Alles, was hier hakt, noch einmal im passenden Register nachlesen.</p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  Zusammengestellt aus deinen Mitschriften vom 19.8., 2.9. und 9.9.2026 sowie den Arbeitsblättern M1 bis M10 zur Reihe „Gemeinde im Urchristentum“. Die Texte der Arbeitsblätter sind hier bewusst nur zusammengefasst, nicht abgedruckt.
+</footer>
+</div>
+
+<script>
+"use strict";
+
+/* ---------- Daten ---------- */
+
+const MC = {
+mc1:[
+ {f:"Wo entstanden die ersten christlichen Gemeinden außerhalb Palästinas vor allem?",
+  o:["In kleinen Bergdörfern im Landesinneren","In den Hafen- und Handelsstädten am Mittelmeer","In den Wüstenklöstern Ägyptens","Ausschließlich in Rom"],c:1,
+  e:"Am Mittelmeer, wo Handel und Verkehr die Menschen zusammenbrachten."},
+ {f:"Zu welchem Reich gehörten diese Städte?",o:["Zum Perserreich","Zum Reich Alexanders des Großen","Zum Römischen Reich","Zum Byzantinischen Reich"],c:2,
+  e:"Alle lagen im Römischen Reich; heute gehören sie zu Griechenland, der Türkei, Syrien und Italien."},
+ {f:"Was war typisch für eine antike Hafenstadt wie Korinth?",
+  o:["Fast alle Einwohner verehrten denselben Gott","Alle Bewohner waren ungefähr gleich wohlhabend","Fremde durften die Stadt nicht betreten","Menschen vieler Völker und Religionen lebten dort, die sozialen Unterschiede waren riesig"],c:3,
+  e:"Reiche Händler, Seefahrer, Arbeiter, Sklaven und Kriminelle auf engem Raum – das prägte die Stadt."},
+ {f:"Wie viele Häfen hatte Korinth?",o:["Keinen, die Stadt lag im Landesinneren","Einen einzigen großen Hafen","Zwei: Lechaion im Westen und Kenchreä im Osten","Drei Häfen rund um die Stadt"],c:2,
+  e:"Korinth lag auf dem Isthmus und konnte deshalb nach beiden Meeren hin Handel treiben."},
+ {f:"Was war Akrokorinth?",o:["Der Burgberg über der Stadt mit dem Aphrodite-Tempel und dem Villenviertel","Der östliche Hafen der Stadt","Das Regierungsgebäude am Hauptplatz","Der Name der korinthischen Synagoge"],c:0,
+  e:"575 Meter hoch. In einer Villa dort oben feiert in M3 die Gemeinde – im Haus des Gaius."}
+],
+mc2:[
+ {f:"Warum waren die Menschen in Hafenstädten offen für eine neue Religion?",
+  o:["Weil der Kaiser das Christentum befohlen hatte","Weil dort schon viele Religionen nebeneinander lebten und man Toleranz gewohnt war","Weil die alten Götter offiziell verboten waren","Weil es dort keine Tempel gab"],c:1,
+  e:"Eine weitere Glaubensrichtung fiel in dieser Mischung nicht als Bedrohung auf."},
+ {f:"Welche Rolle spielte der Seeweg für die jungen Gemeinden?",
+  o:["Er war gefährlich, deshalb blieben die Gemeinden isoliert","Über ihn wurden nur Waren, aber keine Nachrichten transportiert","Über ihn konnten Nachrichten, Hilfe und Austausch zwischen den Gemeinden schnell weitergegeben werden","Er spielte keine Rolle, Paulus reiste nur zu Fuß"],c:2,
+  e:"Briefe wie der 1. Korintherbrief sind genau so unterwegs gewesen."},
+ {f:"Warum war die Botschaft vom Reich Gottes besonders für Arme anziehend?",
+  o:["Weil die Gemeinde jedem Geld auszahlte","Weil sie allen Menschen gilt, unabhängig von der sozialen Herkunft","Weil Arme keine Steuern mehr zahlen mussten","Weil nur Arme getauft werden durften"],c:1,
+  e:"Vor Gott zählt der Stand nicht – in einer Stadt mit riesigen sozialen Unterschieden war das eine starke Aussage."},
+ {f:"Was zog viele Großstadtmenschen an der christlichen Gemeinde an?",
+  o:["Die prächtigen Kirchengebäude","Die Aussicht auf ein politisches Amt","Das Gemeinschaftsgefühl – im Gegensatz zur Anonymität der Großstadt","Dass man dort kostenlos wohnen konnte"],c:2,
+  e:"In der Großstadt kannte niemand den anderen; in der Gemeinde schon."}
+],
+mc3:[
+ {f:"Wo traf sich die Gemeinde in Korinth?",
+  o:["In einer eigenen Kirche am Hafen","Im Innenhof der Villa eines wohlhabenden Gemeindeglieds","Im Apollontempel am Hauptplatz","In der Synagoge"],c:1,
+  e:"Im Haus des Gaius. Eigene Kirchengebäude gab es noch nicht."},
+ {f:"Was bedeutet der Ruf „Maranatha“?",
+  o:["„Gelobt sei Gott“","„Friede sei mit euch“","„Komm, Herr!“","„So soll es sein“"],c:2,
+  e:"Ein aramäischer Ruf. Er zeigt: Die Gemeinde rechnete fest damit, dass Jesus bald wiederkommt."},
+ {f:"Warum ärgerten sich die Hafenarbeiter am Ende des Abends?",
+  o:["Weil sie kein Lied mitsingen durften","Weil beim gemeinsamen Mahl für sie kaum noch etwas übrig war","Weil die Versammlung zu früh anfing","Weil sie nicht getauft werden durften"],c:1,
+  e:"Sie kamen direkt von der Arbeit und fanden einen leer gegessenen Tisch vor – mit Gerechtigkeit und Gleichheit hatte das wenig zu tun."},
+ {f:"Welche Aufgabe hatte Phoebe in der Gemeinde?",
+  o:["Sie war Diakonin und sorgte dafür, dass alle versorgt wurden","Sie war die Frau des Gemeindevorstehers","Sie leitete das Gebet über Brot und Kelch","Sie war die Besitzerin der Villa"],c:0,
+  e:"Sie erinnert die Gemeinde auch daran, dass die Kranken vernachlässigt werden."},
+ {f:"Was fiel dem Besucher an den Frauen der Gemeinde auf?",
+  o:["Dass sie schweigen mussten","Dass sie getrennt von den Männern saßen","Dass sie sich selbstverständlich an den Gesprächen beteiligten – eine Witwe führte sogar das Geschäft ihres Mannes weiter","Dass keine einzige Frau anwesend war"],c:2,
+  e:"Für einen Griechen dieser Zeit war das ungewöhnlich genug, um es eigens zu erwähnen."},
+ {f:"Was geschieht im Zentrum der Feier?",
+  o:["Ein Tieropfer wird dargebracht","Brot und Kelch werden mit den Worten Jesu geteilt, zur Erinnerung an ihn","Der Vorsteher liest aus der Tora","Die Gemeinde zahlt ihre Beiträge ein"],c:1,
+  e:"Es sind dieselben Einsetzungsworte, die auch heute im Abendmahl gesprochen werden – „bis er wiederkommt“."}
+],
+mc4:[
+ {f:"In welchem Brief steht der Vergleich der Gemeinde mit einem Körper?",
+  o:["Im Brief an Philemon","Im 1. Korintherbrief","Im Galaterbrief","In der Apostelgeschichte"],c:1,
+  e:"1 Kor 12 – das Kapitel vom Leib und den vielen Gliedern."},
+ {f:"Was will Paulus mit dem Bild vom Körper sagen?",
+  o:["Der Vorsteher ist der Kopf und darf allein entscheiden","Wer die auffälligste Begabung hat, ist am wichtigsten","Jedes Mitglied ist mit seinen Fähigkeiten unentbehrlich, alle sind gleichberechtigt","Die Gemeinde soll möglichst groß werden"],c:2,
+  e:"Verschiedene Fähigkeiten, gleicher Wert – deshalb keine Konkurrenz."},
+ {f:"Die Korinther sagten: „Ich gehöre zu Paulus!“ – „Ich zu Apollos!“ Was antwortet Paulus?",
+  o:["Er freut sich über seine eigene Anhängerschaft","Er sagt: Christus lässt sich nicht zerteilen, bildet keine Gruppen","Er fordert die Gemeinde auf, sich zu trennen","Er verweist die Streitenden an ein Gericht"],c:1,
+  e:"Getauft seid ihr auf Christus, nicht auf einen Prediger."},
+ {f:"Was kritisiert Paulus am Herrenmahl in Korinth?",
+  o:["Dass zu wenig gesungen wird","Dass Frauen daran teilnehmen","Dass jeder erst sein eigenes Essen verzehrt: Der eine hungert, der andere ist schon betrunken","Dass es zu lange dauert"],c:2,
+  e:"Sein Rat: aufeinander warten; wer Hunger hat, soll vorher zu Hause essen."},
+ {f:"Wie soll es nach 1 Kor 14 im Gottesdienst zugehen?",
+  o:["Nur der Vorsteher darf sprechen","Alle sollen gleichzeitig beten, das ist besonders fromm","Jeder darf etwas beitragen, aber einer nach dem anderen","Es soll geschwiegen werden"],c:2,
+  e:"Das Ziel ist, dass alle etwas davon haben – nicht, dass einzelne beeindrucken."}
+],
+mc5:[
+ {f:"„Onesimus muss ein freier Mensch werden. Jesus hat doch alle Menschen gleich behandelt.“",o:["Hepaphras","Paulus","Demas"],c:0,e:"Hepaphras vertritt die äußerliche Freiheit, und zwar sofort."},
+ {f:"„Wir müssen ihn zurückschicken. Die Freiheit, die wir predigen, meint die Freiheit von Sünde und Tod.“",o:["Hepaphras","Paulus","Demas"],c:2,e:"Demas trennt die innere Freiheit streng von der äußeren."},
+ {f:"„Vor Gott sind alle gleich – aber bis der Herr wiederkommt, soll jeder in seinem Stand bleiben.“",o:["Hepaphras","Paulus","Demas"],c:1,e:"Die vermittelnde, abwartende Position des Paulus."},
+ {f:"„Du bist innerlich frei von der Macht der Sünde, hier auf Erden bleibst du aber Sklave. Hoffe, warte und bete.“",o:["Hepaphras","Paulus","Demas"],c:2,e:"Demas vertröstet auf die neue Welt bei der Wiederkunft des Herrn."},
+ {f:"„Die Taufe kann ich ihm nicht verweigern – zurückschicken werde ich ihn aber wohl müssen.“",o:["Hepaphras","Paulus","Demas"],c:1,e:"Genau dieses Hin- und Hergerissensein ist typisch für Paulus in der Szene."},
+ {f:"„Die Freiheit muss doch auch für das Zusammenleben der Christen jetzt schon eine Bedeutung haben.“",o:["Hepaphras","Paulus","Demas"],c:0,e:"Hepaphras will, dass der Glaube sofort sichtbare Folgen hat."},
+ {f:"„Jesus hat nicht alle Ordnungen auf den Kopf gestellt. Herren und Sklaven können wir nicht gewaltsam austauschen.“",o:["Hepaphras","Paulus","Demas"],c:1,e:"Paulus erinnert an Spartakus und lehnt einen gewaltsamen Umsturz ab."}
+],
+mc6:[
+ {f:"Wem gehörte der Sklave Onesimus?",o:["Dem Gemeindevorsteher Krispus","Philemon aus Kolossä","Dem Weingutbesitzer Stephanas","Dem Kaufmann Babbios"],c:1,
+  e:"In Philemons Haus traf sich die Gemeinde – das macht den Fall für alle sichtbar."},
+ {f:"Wie kam Onesimus zu Paulus?",o:["Philemon schickte ihn als Boten","Er wurde auf dem Markt verkauft","Er war seinem Herrn davongelaufen und kam zu Paulus ins Gefängnis","Paulus kaufte ihn frei"],c:2,
+  e:"Paulus saß vermutlich in Ephesus im Gefängnis. Dort wurde Onesimus Christ."},
+ {f:"Worum bittet Paulus in seinem Brief an Philemon?",
+  o:["Er soll Onesimus bestrafen, aber milde","Er soll Onesimus verkaufen","Er soll Onesimus verzeihen und ihn nicht mehr als Sklaven, sondern als geliebten Bruder aufnehmen","Er soll Onesimus bei Paulus lassen"],c:2,
+  e:"Paulus bietet sogar an, einen entstandenen Schaden selbst zu bezahlen."},
+ {f:"Wann wurde der Philemonbrief ungefähr geschrieben?",o:["um 30 n. Chr.","um 55 n. Chr.","um 150 n. Chr.","um 313 n. Chr."],c:1,
+  e:"Also gut 20 Jahre nach dem Tod Jesu – die Briefe des Paulus sind die ältesten Schriften des Neuen Testaments."},
+ {f:"Was war „Götzenopferfleisch“?",
+  o:["Fleisch, das Christen heimlich opferten","Fleisch von Tieren, die im Tempel den Göttern geopfert worden waren und danach auf dem Markt verkauft wurden","Besonders teures Fleisch für die Reichen","Fleisch, das nur Priester essen durften"],c:1,
+  e:"Meist wurden nur die Innereien verbrannt; der Rest ging in den Verkauf. Die Tempel waren dadurch fast so etwas wie Schlachthöfe."},
+ {f:"Warum steckt Quartus in der Klemme?",
+  o:["Er hat kein Geld für Fleisch","Er darf als Freigelassener die Stadt nicht verlassen","Er ist geschäftlich von Babbios abhängig und muss zu dessen Gelagen – die Judenchristen halten das Essen dort für unrein","Er ist noch nicht getauft"],c:2,
+  e:"Bleibt er weg, verliert er seine Aufträge und kann seine Familie nicht ernähren. Ein Konflikt zwischen Glauben und Existenz."}
+],
+mc7:[
+ {f:"Welche Stadt lag NICHT im Gebiet des Römischen Reiches?",o:["Korinth","Ephesus","Thessaloniki","Keine – alle drei gehörten dazu"],c:3,
+  e:"Der gesamte Mittelmeerraum war römisch. Das machte Reisen und Briefverkehr überhaupt erst möglich."},
+ {f:"Welcher Grund für die schnelle Ausbreitung passt NICHT zur Mitschrift?",
+  o:["Religiöse Toleranz in den Städten","Austausch über den Seeweg","Der römische Kaiser förderte das Christentum","Das Gemeinschaftsgefühl gegen die Anonymität der Großstadt"],c:2,
+  e:"Im Gegenteil: Die Christen weigerten sich, die Staatsgötter und den Kaiser zu verehren."},
+ {f:"Wer leitete die Feier in der Versammlung von M3?",o:["Tertius","Krispus","Phoebe","Paulus persönlich"],c:1,
+  e:"Paulus war zu dieser Zeit gar nicht in Korinth – er schrieb der Gemeinde Briefe."},
+ {f:"Welche Reihenfolge stimmt?",
+  o:["Erst Abendmahl, dann gemeinsames Essen, dann Lied","Erst gemeinsames Essen, dann Lied und Abendmahl, dann Lesung aus dem Paulusbrief","Erst Lesung, dann Essen, dann Abendmahl","Erst Streit, dann Abendmahl, dann Essen"],c:1,
+  e:"Das Sättigungsmahl stand am Anfang – und genau das führte zum Streit, weil die Nachzügler leer ausgingen."},
+ {f:"„Die Gemeinde ist der Leib Christi.“ Was folgt daraus für Paulus?",
+  o:["Die Stärksten sollen bestimmen","Jedes Glied wird mit seiner Fähigkeit gebraucht, keiner ist überflüssig","Nur Getaufte dürfen sprechen","Die Gemeinde soll sich in Gruppen aufteilen"],c:1,
+  e:"Unterschiedliche Gaben, gleicher Wert."},
+ {f:"Welcher Konflikt wird im 1. Korintherbrief NICHT angesprochen?",
+  o:["Parteienbildung in der Gemeinde","Unordnung beim Herrenmahl","Prozesse vor heidnischen Gerichten","Der Bau einer zu teuren Kirche"],c:3,
+  e:"Kirchengebäude gab es noch nicht – man traf sich in Privathäusern."},
+ {f:"Welche Position vertritt Demas?",
+  o:["Alle Sklaven sollen sofort befreit werden","Freiheit heißt innerlich frei von Sünde zu sein; die echte Freiheit kommt erst in der neuen Welt","Christen dürfen keine Sklaven besitzen","Sklaven sollen sich selbst freikaufen"],c:1,
+  e:"Deshalb sein Rat an Onesimus: hoffen, warten, beten."},
+ {f:"Worin liegt die Bedeutung des Philemonbriefes?",
+  o:["Er schafft die Sklaverei per Gesetz ab","Er ist ein erster Beitrag zur Lösung des Sklavenproblems, weil der Sklave als Bruder aufgenommen werden soll","Er verbietet den Christen den Handel","Er beschreibt die Zerstörung Jerusalems"],c:1,
+  e:"Abgeschafft wird die Sklaverei damit nicht – aber wer seinen Sklaven als Bruder behandeln soll, kann ihn nicht mehr wie eine Sache behandeln."},
+ {f:"Warum weigerten sich Christen, vor den Kaiserbildern niederzuknien?",
+  o:["Weil ihnen das Knien zu anstrengend war","Weil sie nur ihren einen Gott verehrten","Weil es der Kaiser verboten hatte","Weil sie keine Bilder sehen durften"],c:1,
+  e:"Ihre eigene Gebetshaltung war aufrecht, mit weit geöffneten Händen – Öffnung zu Gott statt Unterwerfung."},
+ {f:"Was verbindet den leeren Tisch in M3, den Streit ums Opferfleisch und den Fall Onesimus?",
+  o:["Alle drei handeln vom Geld der Gemeinde","In allen drei Fällen geht es um die Frage, ob in der Gemeinde wirklich alle gleich viel gelten","Alle drei spielen in Jerusalem","In allen dreien greift der römische Staat ein"],c:1,
+  e:"Genau das ist der rote Faden der ganzen Reihe."}
+]
+};
+
+const LT = {
+lt1:{t:"Die ersten christlichen Gemeinden entstanden in den [0] am Mittelmeer. Weil ständig [1] in die Stadt kamen, herrschte dort eine internationale Atmosphäre. Die Menschen hatten eine ganz unterschiedliche [2] Herkunft. Außerdem waren die [3] Unterschiede sehr groß: Neben reichen Händlern lebten dort Seefahrer, Arbeiter, [4] und Kriminelle.",
+ g:[{o:["Bergdörfern","Hafenstädten","Klöstern"],c:1},
+    {o:["Soldaten","Priester","Fremde"],c:2},
+    {o:["religiöse","sportliche","militärische"],c:0},
+    {o:["sozialen","sprachlichen","zeitlichen"],c:0},
+    {o:["Könige","Sklaven","Ärzte"],c:1}]},
+lt2:{t:"An Orten wie Korinth konnten schnell Gemeinden entstehen. Erstens lebten dort viele Religionen nebeneinander, deshalb herrschte religiöse [0] gegenüber neuen Strömungen. Zweitens konnten Nachrichten und Hilfe über den [1] weitergegeben werden. Drittens waren viele [2] für die Botschaft vom Reich Gottes empfänglich, weil sie allen Menschen gilt – egal welcher [3] Herkunft. Viertens zog viele das [4] an, im Gegensatz zur Anonymität der Großstadt.",
+ g:[{o:["Feindschaft","Toleranz","Gleichgültigkeit"],c:1},
+    {o:["Seeweg","Postweg","Marktplatz"],c:0},
+    {o:["Beamte","Priester","Arme"],c:2},
+    {o:["sozialen","sportlichen","militärischen"],c:0},
+    {o:["Gemeinschaftsgefühl","Tempelfest","Handelsgeschäft"],c:0}]},
+lt3:{t:"Paulus vergleicht die Gemeinde mit einem [0]. Die Gemeinde ist der [1] Christi, die einzelnen Mitglieder sind seine [2]. Jedes von ihnen hat andere [3], aber alle sind für ein gelingendes Gemeindeleben [4]. Deshalb sind alle [5] – in der Gemeinde soll es keine Konkurrenz geben.",
+ g:[{o:["Haus","Körper","Schiff"],c:1},
+    {o:["Geist","Leib","Tempel"],c:1},
+    {o:["Glieder","Diener","Gäste"],c:0},
+    {o:["Fähigkeiten","Gebete","Ämter"],c:0},
+    {o:["ersetzbar","unentbehrlich","gefährlich"],c:1},
+    {o:["gleichberechtigt","verschieden bezahlt","nach Rang geordnet"],c:0}]}
+};
+
+const ZU = {
+zu1:{titelLinks:"Ort in Korinth",paare:[
+ {l:"Lechaion",r:"Der Hafen im Westen, Richtung Italien"},
+ {l:"Kenchreä",r:"Der Hafen im Osten, Richtung Kleinasien"},
+ {l:"Akrokorinth",r:"Der 575 m hohe Burgberg mit dem Aphrodite-Tempel und dem Villenviertel"},
+ {l:"Agora",r:"Der Hauptplatz mit Läden, Verwaltung und der Rednertribüne (Bema)"},
+ {l:"Synagoge",r:"Der Versammlungsort der Juden – die Ausgrabungen haben ihn bis heute nicht gefunden"}
+]},
+zu2:{titelLinks:"Konflikt in der Gemeinde",paare:[
+ {l:"Die Gemeinde teilt sich in Parteien auf",r:"Christus lässt sich nicht zerteilen – seid einig und bildet keine Gruppen"},
+ {l:"Christen verklagen einander vor heidnischen Richtern",r:"Lasst die Gemeinde selbst entscheiden; lieber Unrecht leiden"},
+ {l:"Beim Mahl hungern die einen, während die anderen betrunken sind",r:"Wartet aufeinander; wer Hunger hat, soll vorher zu Hause essen"},
+ {l:"Im Gottesdienst reden alle gleichzeitig",r:"Einer nach dem anderen, damit alle etwas davon haben"}
+]}
+};
+
+const RF1 = [
+ "Ankommen im Innenhof der Villa des Gaius – jeder bringt Essen mit, alles kommt auf einen großen Tisch.",
+ "Die erschöpften Hafen- und Hilfsarbeiter treffen ein; für sie ist kaum noch etwas übrig.",
+ "Der Vorsteher Krispus tritt an den Tisch mit Brot und Kelch – der offizielle Teil beginnt.",
+ "Eine Frau schlägt den Rhythmus auf der Handtrommel, alle singen „Maranatha“.",
+ "Krispus teilt Brot und Kelch mit den Worten Jesu (Abendmahl).",
+ "Stephanas liest aus dem Brief des Paulus vor und erklärt schwierige Stellen.",
+ "Einzelne bringen eigene Beiträge ein; eine Frau spricht unverständliche Worte.",
+ "Streit über Gerechtigkeit: Die Hafenarbeiter zeigen auf den leeren Tisch, Phoebe verschafft sich Gehör."
+];
+
+const STAEDTE = [
+ {n:"Rom",x:286,y:238,ok:true,an:"end",dx:-14,dy:5},
+ {n:"Thessaloniki",x:420,y:196,ok:true,an:"end",dx:-14,dy:5},
+ {n:"Philippi",x:458,y:164,ok:true,an:"start",dx:14,dy:5},
+ {n:"Korinth",x:452,y:280,ok:true,an:"end",dx:-14,dy:5},
+ {n:"Ephesus",x:604,y:276,ok:true,an:"start",dx:14,dy:5},
+ {n:"Kolossä",x:672,y:248,ok:true,an:"start",dx:14,dy:5},
+ {n:"Athen",x:474,y:290,ok:false,an:"start",dx:14,dy:12},
+ {n:"Byzanz",x:612,y:132,ok:false,an:"start",dx:14,dy:5},
+ {n:"Tarsus",x:764,y:214,ok:false,an:"start",dx:14,dy:5},
+ {n:"Antiochien",x:802,y:286,ok:false,an:"start",dx:14,dy:5},
+ {n:"Damaskus",x:866,y:344,ok:false,an:"start",dx:14,dy:5},
+ {n:"Jerusalem",x:850,y:412,ok:false,an:"start",dx:14,dy:5},
+ {n:"Alexandria",x:702,y:506,ok:false,an:"start",dx:14,dy:5},
+ {n:"Kyrene",x:512,y:512,ok:false,an:"start",dx:14,dy:5},
+ {n:"Karthago",x:248,y:498,ok:false,an:"start",dx:14,dy:5}
+];
+
+/* ---------- Fortschritt ---------- */
+let gesamt=0, geloest=0;
+const geloestSet=new Set();
+function melde(id){ if(geloestSet.has(id))return; geloestSet.add(id); geloest++; zeichneStand(); }
+function zeichneStand(){
+  document.getElementById("standText").textContent = geloest+" von "+gesamt+" Aufgaben gelöst";
+  document.getElementById("standBalken").style.width = (gesamt? (geloest/gesamt*100):0)+"%";
+}
+
+/* ---------- Multiple Choice ---------- */
+function baueMC(hostId, items){
+  const host=document.getElementById(hostId); if(!host) return;
+  items.forEach((it,i)=>{
+    gesamt++;
+    const key=hostId+"-"+i;
+    const box=document.createElement("div"); box.className="frage";
+    const t=document.createElement("p"); t.className="text"; t.textContent=(i+1)+". "+it.f; box.appendChild(t);
+    const rueck=document.createElement("p"); rueck.className="rueck";
+    const btns=[];
+    it.o.forEach((opt,j)=>{
+      const b=document.createElement("button");
+      b.type="button"; b.className="opt";
+      b.innerHTML='<span class="box"></span><span></span>';
+      b.lastChild.textContent=opt;
+      b.addEventListener("click",()=>{
+        if(b.classList.contains("richtig")) return;
+        if(j===it.c){
+          b.classList.remove("falsch"); b.classList.add("richtig");
+          b.firstChild.textContent="✓";
+          btns.forEach(x=>{x.disabled=true;});
+          rueck.className="rueck zeig gut"; rueck.textContent="Richtig. "+it.e;
+          melde(key);
+        }else{
+          b.classList.add("falsch"); b.firstChild.textContent="✕";
+          rueck.className="rueck zeig schlecht"; rueck.textContent="Noch nicht – probier es weiter.";
+        }
+      });
+      btns.push(b); box.appendChild(b);
+    });
+    box.appendChild(rueck); host.appendChild(box);
+  });
+}
+
+/* ---------- Lückentext ---------- */
+function baueLT(hostId, daten){
+  const host=document.getElementById(hostId); if(!host) return;
+  gesamt++;
+  const p=document.createElement("p"); p.className="lueck";
+  const teile=daten.t.split(/\[(\d+)\]/);
+  const selects=[];
+  teile.forEach((st,idx)=>{
+    if(idx%2===0){ p.appendChild(document.createTextNode(st)); }
+    else{
+      const g=daten.g[+st];
+      const s=document.createElement("select");
+      s.innerHTML='<option value="">…</option>';
+      g.o.forEach((o,k)=>{ const op=document.createElement("option"); op.value=k; op.textContent=o; s.appendChild(op); });
+      s.addEventListener("change",()=>{ s.classList.remove("richtig","falsch"); });
+      selects.push({s:s,c:g.c}); p.appendChild(s);
+    }
+  });
+  host.appendChild(p);
+  const zeile=document.createElement("div"); zeile.className="btn-zeile";
+  const pruef=document.createElement("button"); pruef.className="btn"; pruef.textContent="Lücken prüfen";
+  const loes=document.createElement("button"); loes.className="btn leise"; loes.textContent="Lösung zeigen";
+  const rueck=document.createElement("p"); rueck.className="rueck";
+  pruef.addEventListener("click",()=>{
+    let richtig=0;
+    selects.forEach(o=>{ o.s.classList.remove("richtig","falsch");
+      if(o.s.value===String(o.c)){o.s.classList.add("richtig");richtig++;} else {o.s.classList.add("falsch");} });
+    if(richtig===selects.length){ rueck.className="rueck zeig gut"; rueck.textContent="Alle Lücken richtig."; melde(hostId); }
+    else{ rueck.className="rueck zeig schlecht"; rueck.textContent=richtig+" von "+selects.length+" richtig. Die rot markierten Felder noch einmal überdenken."; }
+  });
+  loes.addEventListener("click",()=>{
+    selects.forEach(o=>{ o.s.value=String(o.c); o.s.classList.remove("falsch"); o.s.classList.add("richtig"); });
+    rueck.className="rueck zeig gut"; rueck.textContent="Das ist die Lösung. Lies den Satz einmal ganz durch.";
+  });
+  zeile.appendChild(pruef); zeile.appendChild(loes);
+  host.appendChild(zeile); host.appendChild(rueck);
+}
+
+/* ---------- Zuordnen ---------- */
+function mische(a){ const b=a.slice(); for(let i=b.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[b[i],b[j]]=[b[j],b[i]];} return b; }
+
+function baueZU(hostId, daten){
+  const host=document.getElementById(hostId); if(!host) return;
+  gesamt++;
+  const optionen=mische(daten.paare.map(p=>p.r));
+  const wrap=document.createElement("div"); wrap.className="paare";
+  const selects=[];
+  daten.paare.forEach(p=>{
+    const k=document.createElement("div"); k.className="paar";
+    const l=document.createElement("div"); l.className="links"; l.textContent=p.l; k.appendChild(l);
+    const s=document.createElement("select");
+    s.innerHTML='<option value="">– bitte wählen –</option>';
+    optionen.forEach(o=>{ const op=document.createElement("option"); op.value=o; op.textContent=o; s.appendChild(op); });
+    s.addEventListener("change",()=>s.classList.remove("richtig","falsch"));
+    k.appendChild(s); wrap.appendChild(k); selects.push({s:s,c:p.r});
+  });
+  host.appendChild(wrap);
+  const zeile=document.createElement("div"); zeile.className="btn-zeile";
+  const pruef=document.createElement("button"); pruef.className="btn"; pruef.textContent="Zuordnung prüfen";
+  const loes=document.createElement("button"); loes.className="btn leise"; loes.textContent="Lösung zeigen";
+  const rueck=document.createElement("p"); rueck.className="rueck";
+  pruef.addEventListener("click",()=>{
+    let r=0; selects.forEach(o=>{ o.s.classList.remove("richtig","falsch");
+      if(o.s.value===o.c){o.s.classList.add("richtig");r++;} else {o.s.classList.add("falsch");} });
+    if(r===selects.length){ rueck.className="rueck zeig gut"; rueck.textContent="Alles richtig zugeordnet."; melde(hostId); }
+    else { rueck.className="rueck zeig schlecht"; rueck.textContent=r+" von "+selects.length+" stimmen."; }
+  });
+  loes.addEventListener("click",()=>{
+    selects.forEach(o=>{ o.s.value=o.c; o.s.classList.remove("falsch"); o.s.classList.add("richtig"); });
+    rueck.className="rueck zeig gut"; rueck.textContent="Das ist die Lösung.";
+  });
+  zeile.appendChild(pruef); zeile.appendChild(loes);
+  host.appendChild(zeile); host.appendChild(rueck);
+}
+
+/* ---------- Reihenfolge ---------- */
+function baueRF(){
+  const ol=document.getElementById("rf1"); if(!ol) return;
+  gesamt++;
+  let stand=mische(RF1.map((t,i)=>({t:t,i:i})));
+  if(stand.every((o,k)=>o.i===k)) stand.reverse();
+  function zeichne(){
+    ol.innerHTML="";
+    stand.forEach((o,k)=>{
+      const li=document.createElement("li");
+      li.innerHTML='<span class="zahl">'+(k+1)+'</span><span class="txt"></span>'+
+        '<span class="pfeile"><button type="button" aria-label="nach oben">▲</button><button type="button" aria-label="nach unten">▼</button></span>';
+      li.querySelector(".txt").textContent=o.t;
+      const [hoch,runter]=li.querySelectorAll(".pfeile button");
+      hoch.addEventListener("click",()=>{ if(k>0){[stand[k-1],stand[k]]=[stand[k],stand[k-1]];zeichne();} });
+      runter.addEventListener("click",()=>{ if(k<stand.length-1){[stand[k+1],stand[k]]=[stand[k],stand[k+1]];zeichne();} });
+      ol.appendChild(li);
+    });
+  }
+  zeichne();
+  const rueck=document.getElementById("rf1rueck");
+  document.getElementById("rf1pruef").addEventListener("click",()=>{
+    let r=0;
+    [...ol.children].forEach((li,k)=>{ li.classList.remove("richtig","falsch");
+      if(stand[k].i===k){li.classList.add("richtig");r++;} else li.classList.add("falsch"); });
+    if(r===stand.length){ rueck.className="rueck zeig gut"; rueck.textContent="Die Reihenfolge stimmt."; melde("rf1"); }
+    else { rueck.className="rueck zeig schlecht"; rueck.textContent=r+" von "+stand.length+" stehen an der richtigen Stelle."; }
+  });
+  document.getElementById("rf1loesung").addEventListener("click",()=>{
+    stand=RF1.map((t,i)=>({t:t,i:i})); zeichne();
+    [...ol.children].forEach(li=>li.classList.add("richtig"));
+    rueck.className="rueck zeig gut"; rueck.textContent="Das ist der Ablauf aus M3.";
+  });
+}
+
+/* ---------- Karte ---------- */
+function baueKarte(){
+  const g=document.getElementById("staedte"); if(!g) return;
+  gesamt++;
+  const NS="http://www.w3.org/2000/svg";
+  let gefunden=0;
+  const ziel=STAEDTE.filter(s=>s.ok).length;
+  const stand=document.getElementById("karteStand");
+  const rueck=document.getElementById("karteRueck");
+  const knoten=[];
+  STAEDTE.forEach(s=>{
+    const gg=document.createElementNS(NS,"g"); gg.setAttribute("class","stadt"); gg.setAttribute("tabindex","0");
+    gg.setAttribute("role","button"); gg.setAttribute("aria-label",s.n);
+    const treffer=document.createElementNS(NS,"circle");
+    treffer.setAttribute("cx",s.x); treffer.setAttribute("cy",s.y); treffer.setAttribute("r",28);
+    treffer.setAttribute("fill","transparent");
+    const p=document.createElementNS(NS,"circle"); p.setAttribute("class","punkt");
+    p.setAttribute("cx",s.x); p.setAttribute("cy",s.y); p.setAttribute("r",7);
+    const t=document.createElementNS(NS,"text"); t.setAttribute("class","beschriftung");
+    t.setAttribute("x",s.x+s.dx); t.setAttribute("y",s.y+s.dy); t.setAttribute("text-anchor",s.an);
+    t.setAttribute("stroke","#E4DCCA"); t.setAttribute("stroke-width","3.5"); t.setAttribute("paint-order","stroke");
+    t.textContent=s.n;
+    gg.appendChild(p); gg.appendChild(t); gg.appendChild(treffer); g.appendChild(gg);
+    knoten.push({g:gg,s:s});
+    function klick(){
+      if(gg.classList.contains("getroffen")) return;
+      if(s.ok){ gg.classList.remove("daneben"); gg.classList.add("getroffen"); gefunden++;
+        stand.textContent=gefunden+" von "+ziel+" gefunden";
+        rueck.className="rueck zeig gut";
+        rueck.textContent=gefunden===ziel? "Alle sechs gefunden: Rom, Korinth, Ephesus, Philippi, Kolossä und Thessaloniki."
+                                          : s.n+" stimmt.";
+        if(gefunden===ziel) melde("karte");
+      } else {
+        gg.classList.add("daneben");
+        rueck.className="rueck zeig schlecht";
+        rueck.textContent="Nach "+s.n+" ist kein Brief des Neuen Testaments benannt.";
+      }
+    }
+    gg.addEventListener("click",klick);
+    gg.addEventListener("keydown",e=>{ if(e.key==="Enter"||e.key===" "){e.preventDefault();klick();} });
+  });
+  document.getElementById("karteTipp").addEventListener("click",()=>{
+    rueck.className="rueck zeig gut";
+    rueck.textContent="Gesucht sind die Städte hinter diesen Briefnamen: Römerbrief, Korintherbrief, Epheserbrief, Philipperbrief, Kolosserbrief, Thessalonicherbrief.";
+  });
+  document.getElementById("karteReset").addEventListener("click",()=>{
+    knoten.forEach(k=>k.g.classList.remove("getroffen","daneben"));
+    gefunden=0; stand.textContent="0 von "+ziel+" gefunden"; rueck.className="rueck";
+  });
+  stand.textContent="0 von "+ziel+" gefunden";
+}
+
+/* ---------- Klappkarten ---------- */
+document.querySelectorAll(".klapp > button").forEach(b=>{
+  b.addEventListener("click",()=>{ b.parentElement.classList.toggle("auf");
+    b.setAttribute("aria-expanded", b.parentElement.classList.contains("auf")?"true":"false"); });
+  b.setAttribute("aria-expanded","false");
+});
+
+/* ---------- Register ---------- */
+const KAPITEL=[
+ {id:"k1",l:"Hafenstädte"},
+ {id:"k2",l:"Warum dort?"},
+ {id:"k3",l:"Versammlung"},
+ {id:"k4",l:"Paulus"},
+ {id:"k5",l:"Onesimus"},
+ {id:"k6",l:"Check"}
+];
+const nav=document.getElementById("reiter");
+KAPITEL.forEach((k,i)=>{
+  const b=document.createElement("button");
+  b.type="button"; b.setAttribute("role","tab"); b.dataset.ziel=k.id;
+  b.innerHTML='<span class="nr">'+(i+1)+'</span>'+k.l;
+  b.addEventListener("click",()=>zeige(k.id));
+  nav.appendChild(b);
+});
+function zeige(id){
+  document.querySelectorAll("section.kapitel").forEach(s=>s.classList.toggle("aktiv",s.id===id));
+  nav.querySelectorAll("button").forEach(b=>b.setAttribute("aria-selected", b.dataset.ziel===id?"true":"false"));
+  window.scrollTo({top:0,behavior:"instant"});
+}
+
+/* ---------- Start ---------- */
+Object.keys(MC).forEach(k=>baueMC(k,MC[k]));
+Object.keys(LT).forEach(k=>baueLT(k,LT[k]));
+Object.keys(ZU).forEach(k=>baueZU(k,ZU[k]));
+baueRF();
+baueKarte();
+zeige("k1");
+zeichneStand();
+</script>
+</body>
+</html>
